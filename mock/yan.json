@@ -1,0 +1,28 @@
+[
+	{
+		"status":200,
+		"message":"成功返回数据",
+		"yan":"tuvy",
+		"img":"../img/yan-TUVY.jpg"
+	}, {
+		"status":200,
+		"message":"成功返回数据",
+		"yan":"1hDy",
+		"img":"../img/yan-1hDy.jpg"
+	}, {
+		"status":200,
+		"message":"成功返回数据",
+		"yan":"7xi8",
+		"img":"../img/yan-7xi8.jpg"
+	}, {
+		"status":200,
+		"message":"成功返回数据",
+		"yan":"nmt5",
+		"img":"../img/yan-nmt5.jpg"
+	}, {
+		"status":200,
+		"message":"成功返回数据",
+		"yan":"Q8aY",
+		"img":"../img/yan-Q8aY.jpg"
+	}
+]

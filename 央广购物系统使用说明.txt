@@ -1,0 +1,90 @@
+
+《-------------------js文件说明-------------------》
+	final.js   --应用于每个页面当中
+	index.js   --首页  index.html
+	list.js    --列表专题  list.html
+	login.js   --登陆  login.html 
+	regist.js  --注册  regist.html
+	shopcar.js --购物车  shopcar.html 
+	detail.js  --商品详情  detail.html,detail2.html,detail3.html,detail4.html
+
+《-------------------json文件说明-------------------》
+	user1.json    --用户名和密码
+	message.json  --短信验证码或则短信动态密码
+	yan.json      --网页验证码（图片路径和验证码）
+	address.json  --省市县级联文件
+
+《-------------------页面功能说明-------------------》	
+
+每个页面共有部分的功能：1、导航栏的购物车选项现实购物车商品数量，滑过显示购物车商品具体内容，并点击可实现删除购物车商品操作。
+			2、导航栏二级菜单
+			3、现实当前登录用户名
+
+
+1、index.html 首页（http://www.cnrmall.com/）
+	进入：点击导航栏中的首页，或则每个页面中的logo(包括注册和登陆页面)；
+	主要实现：
+		a.大图轮播、
+		b.楼层导航、
+		c.二级菜单(每个页面的nav)。
+		d.原网页其余效果钧已实现
+
+2.list.html 专题列表页面（http://www.cnrmall.com/list-5302）
+	进入：分别通过每个页面的导航栏（流行时尚）>配饰（其他） 进入。
+	主要实现：
+		a.tab选项卡切换（销量，价格，最新上架），
+		b.到商品详情的跳转功能。
+
+3、商品详情页面：
+	detail.html（http://www.cnrmall.com/dwitem-360250.html），
+	detail2.html（http://www.cnrmall.com/dwitem-404370.html），
+	detail3.html（http://www.cnrmall.com/dwitem-404362.html），
+	detail4.html（http://www.cnrmall.com/dwitem-402382.html）；
+	进入:  分别通过每个页面的导航栏（流行时尚）>配饰（其他）>销量选项卡下的前四个 进入。
+	主要实现：
+		A、放大镜功能；
+		B、添加商品到购物车（名字，图片，id，本页地址，价格，尺寸，颜色），保存在cookie(products)中；
+		C、城市地址级联（ajax请求服务器中/mock/address.json。并操作现实到页面）；
+		D、修改商品数量；
+		E、tab选项卡切换（商品描述，用户品论等）；
+	注：
+	a.如果商品尺寸，颜色不同，存入购物车的数据也逐条增加；
+	b.商品的库存状态通过选择配货地区时，随机数产生模拟数据（无货或有货），有货才可以加入购物车；
+	c.加入购物车需要在登陆状态，否则将跳转到登陆页面。
+	d.点击加入购物车，同时修改导航栏上购物车商品的具体信息和数量。
+
+4、shopcar.html 购物车页面（http://www.cnrmall.com/tv/dbcart/cart.jsp）
+	进入：（登陆状态）点击每个导航栏上的购物车或则里面的结算按钮。
+	主要实现：
+		a.删除
+		b.修改数量
+		c.全选
+		d.删除选中（或全部删除）
+		e.计算选中商品金额
+		f.点击结算按钮保存选中的商品信息到cookie（needPay）并跳转到结算确认订单页面
+
+5、pay.html 确认订单页面（http://www.cnrmall.com/tv/dbcart/checkOut.jsp） 
+	进入：购物车>选中商品点击结算 进入。
+	主要实现：
+		a.点击提交时，删除该cookie（needPay）和购物车cookie(products)中相应商品信息。
+		b.实现几个选项卡的切换，关闭；
+		c.三级城市级联菜单（ajax请求服务器中/mock/address.json。并操作现实到页面）；
+
+6、注册和登录功能	login.html     (http://www.cnrmall.com/tv/user/Login.jsp),
+		register.html  (http://www.cnrmall.com/tv/user/regist.jsp);
+	进入：每个页面的头部的登陆和注册链接；或则登陆和注册页面中的相互跳转链接
+	
+	采用php（check.php）操作json实现：
+		
+		注：所有输入框本地用正则实现了输入信息的校验；
+
+	a.注册检查是否重名从服务器获取模拟的用户名数据(/mock/user1.json)判断；
+	b.注册账户信息存入user1.json中；	
+	c.登录后登录状态（用户名，密码）的保存，存在cookie(Name和Pwd)中，据此判断登录状态；
+	d.登录和注册的验证码均通过从服务器/mock/yan.json中随机获取图片的链接地址，和对应的验证码；
+	e.短信验证码和手机登陆动态密码通过从服务器/mock/message.json中随机获取数据，并模拟现实到页面中，方便查看
+	f.登陆过程中的记住密码和自动登录状态（true或false）存储在cookie(isrember和islogin中),
+	  并通过此判断实现记住密码和自动登录，同时将登陆需要记住的用户名和密码存在cookie(remName和remPwd中)	
+	g.登陆和注册页面头部帮助中心滑过现实菜单；
+
+
